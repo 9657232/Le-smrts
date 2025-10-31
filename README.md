@@ -1,3 +1,3 @@
 # Le-smrts
-ben is cool
-mars is cool
+Ben is cool
+Mars is cool
