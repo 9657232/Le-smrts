@@ -1,6 +1,6 @@
 # Le-smrts
-mars is the coolest man ever
-
 john is lame
 
-so is ben
+so is mars
+
+Ben is the coolest
