@@ -1,6 +1,3 @@
 # Le-smrts
-john is lame
-
-so is mars
-
-Ben is the coolest
+ben is cool
+mars is cool
