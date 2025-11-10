@@ -1,12 +1,13 @@
-Ing I1;
+Ingredients i1;
 
 void setup() {
-  ing1 = new Ingredient();
+  i1 = new Ingredients();
+  size(256,240);
 
 }
 
 void draw() {
 background(126);
-ing1.display();
+i1.display();
 
 }
