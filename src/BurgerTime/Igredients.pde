@@ -1,17 +1,26 @@
-class Ing {
-// Member Variables
-int x,y,w,h, speed;
-PImage I1;
+class Ingredients {
+  // Member Variables
+  int x, y, w, h, speed;
+  //PImage i1;
 
-// Constructor
-Log() {}
+  // Constructor
+  Ingredients() {
+    x = 50;
+    y = 30;
+    w = 48;
+    h = 8;
+  }
 
-// Member Methods
+  // Member Methods
 
-void dispay() {
-  image(l1,x,y);
-}
+  void display() {
+    noStroke();
+    fill(#DB6E00);
+    //image(i1,x,y);
+    rectMode(CENTER);
+    rect(x,y,w,h);
+  }
 
-void move() {}
-
+  void move() {
+  }
 }
