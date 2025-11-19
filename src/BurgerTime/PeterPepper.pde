@@ -1,7 +1,7 @@
 class Chef {
   // Member Variables
-  int x, y, w, h, speed, move, animation,anim2;
-  PImage p, p1, p2, pr1, pr2,pl1,pl2;
+  int x, y, w, h, speed, move, animation, anim2, anim3, animl, animr;
+  PImage p, p1, p2, pr1, pr2, pl1, pl2;
 
   // Constructor
   Chef() {
@@ -43,32 +43,38 @@ class Chef {
       if (key == 'd' || key == 'D' || keyCode == RIGHT) {
         animation = animation+1;
         anim2 = 0;
+        animr = 0;
       }
-      if (animation<10) {
+      if (animation>0 && animation<11) {
         image(pr1, x, y);
-      } else if (animation<20) {
-      image(pr2,x,y);
+      } else if (animation>10 && animation<22) {
+        image(pr2, x, y);
       }
-      if (animation>19) {
+      if (animation>20) {
         animation = 0;
       }
-    } 
-    if (keyPressed == true) {
-      if (key == 'a' || key == 'A' || keyCode == LEFT) {
-        anim2 = anim2+1;
-        animation = 0;
-      }
-      if (anim2<10) {
-        image(pl1, x, y);
-      } else if (animation<20) {
-      image(pl2,x,y);
-      }
-      if (anim2>19) {
-        anim2 = 0;
-      }
+    } else if (keyPressed == true && key == 'a' || key == 'A' || keyCode == LEFT) {
+      anim2 = anim2+1;
+      animation = 0;
+      animl = 0;
     }
-    if (keyPressed == false) {
-      image(p, x, y);
+    if (anim2>0 && anim2<11) {
+      image(pl1, x, y);
+    } else if (anim2>10 && anim2<22) {
+      image(pl2, x, y);
+    }
+    if (anim2>20) {
+      anim2 = 0;
+    } else if (keyPressed == false) {
+      if (anim2>0 || animl>0) {
+        image(pl1, x, y);
+        anim2 = 0;
+        animl = 1;
+      } else if (animation>0) {
+        image(pr1, x, y);
+      } else {
+        image(p, x, y);
+      }
     }
   }
 
