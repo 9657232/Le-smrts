@@ -1,12 +1,13 @@
 class Chef {
   // Member Variables
-  int x, y, w, h, speed, move, animation, anim2;
-  PImage p, p1, p2, pr1, pr2, pl1, pl2;
+  int x, y, w, h, xspeed, move, animation, anim2, yspeed;
+  float ladt,ladv;
+  PImage p, p1, p2, pr1, pr2, pl1, pl2, pd1, pd2, pu1, pu2;
 
   // Constructor
   Chef() {
     x = 100;
-    y = 224;
+    y = 232;
     w = 16;
     h = 16;
     p = loadImage("PeterPepper.png");
@@ -16,7 +17,11 @@ class Chef {
     pr2 = loadImage("PeterPepperRight2.png");
     pl1 = loadImage("PeterPepperLeft.png");
     pl2 = loadImage("PeterPepperLeft1.png");
-    speed = 0;
+    pd1 = loadImage("PeterPepDown1.png");
+    pd2 = loadImage("PeterPepDown2.png");
+    pu1 = loadImage("PeterPepUp1.png");
+    pu2 = loadImage("PeterPepUp2.png");
+    xspeed = 0;
     move = 0;
   }
 
@@ -24,51 +29,92 @@ class Chef {
 
   void display() {
     println(animation, anim2);
-    imageMode(CORNER);
+    imageMode(CENTER);
     if (keyPressed == true) {
       if (key == 'a' || key == 'A' || keyCode == LEFT) {
-        speed = -1;
+        xspeed = -1;
       }
     } else {
-      speed = 0;
+      xspeed = 0;
     }
     if (keyPressed == true) {
       if (key == 'd' || key == 'D' || keyCode == RIGHT) {
-        speed = 1;
+        xspeed = 1;
       }
     } else {
-      speed = 0;
+      xspeed = 0;
+    }
+    if (keyPressed == true) {
+      if (key == 'w' || key == 'W' || keyCode == UP) {
+          image(p, x, y);
+          ladv = ladv+.1;
+          anim2 = 0;
+          animation = 0;
+          if (ladv>0 && ladv<.5) {
+            image(pu1, x, y);
+        } else if (ladv>=.5 && ladv<1.1) {
+          image(pu2, x, y-2);
+        }
+        if (ladv >=1) {
+          ladv = 0;
+        }
+      }
+    } else {
+      yspeed = 0;
+      ladv = 0;
+    }
+    if (keyPressed == true) {
+      if (key == 's' || key == 'S' || keyCode == DOWN) {
+        ladt = ladt+.1;
+        yspeed = 1;
+        anim2 = 0;
+        animation = 0;
+        if (ladt>0 && ladt<.5) {
+          image(pd1, x, y);
+        } else if (ladt>=.5 && ladt<1.1) {
+          image(pd2, x, y-2);
+        }
+        if (ladt >=1) {
+          ladt = 0;
+        }
+      }
+    } else {
+      yspeed = 0;
+      ladt = 0;
     }
     if (keyPressed == true) {
       if (key == 'd' || key == 'D' || keyCode == RIGHT) {
         animation = animation+1;
         anim2 = 0;
       }
-      if (animation>0 && animation<11) {
+      if (animation>0 && animation<=6) {
         image(pr1, x, y);
-      } else if (animation>10 && animation<22) {
-        image(pr2, x, y);
+      } else if (animation>6 && animation<11) {
+        image(pr2, x, y-2);
       }
-      if (animation>20) {
-        animation = 0;
+      if (animation>=10) {
+        animation = 1;
       }
-    } 
+    }
     if (keyPressed == true) {
       if (key == 'a' || key == 'A' || keyCode == LEFT) {
         anim2 = anim2+1;
         animation = 0;
       }
-      if (anim2>0 && anim2<11) {
+      if (anim2>0 && anim2<=6) {
         image(pl1, x, y);
-      } else if (anim2>10 && anim2<22) {
-        image(pl2, x, y);
+      } else if (anim2>6 && anim2<11) {
+        image(pl2, x, y-2);
       }
-      if (anim2>20) {
-        anim2 = 0;
+      if (anim2>=10) {
+        anim2 = 1;
       }
-    } 
+    }
     if (keyPressed == false) {
       image(p, x, y);
+      anim2 = 0;
+      animation = 0;
+      ladt = 0;
     }
   }
 
@@ -78,7 +124,17 @@ class Chef {
       move = move+1;
       if (move>0) {
         move = 0;
-        x = x+speed;
+        x = x+xspeed;
+        y = y+yspeed;
+        if (x > width-32) {
+          x=width-32;
+          anim2=0;
+          animation=0;
+        } else if (x < 32) {
+          x = 32;
+          anim2 = 0;
+          animation = 0;
+        }
       }
     }
   }
