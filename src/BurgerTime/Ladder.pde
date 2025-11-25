@@ -1,26 +1,108 @@
 class Ladder {
-  // Member Variables
-  int x, y, w, h;
-  //PImage i1;
+  int x, y, w, h, c, m;
+  PImage lad;
 
   // Constructor
-  Ladder() {
-    x = 200;
-    y = 40;
-    w = 12;
-    h = 64;
+  Ladder(int x, int y, int w, int h, int c) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.c = c;
+    lad = loadImage("ladd.png");
+    m = 0;
   }
-
-  // Member Methods
 
   void display() {
-    noStroke();
-    fill(255);
-    //image(i1,x,y);
-    rectMode(CENTER);
-    rect(x,y,w,h);
-  }
-
-  void move() {
+    println(m);
+    if (c1.x<=x+8 && c1.x>=x-8) {
+      if (key == 'w' || key == 'W' || keyCode == UP) {
+        m = 1;
+        c1.yspeed = -1;
+        c1.x = x;
+      }
+    } else {
+      m = 0;
+    }
+    imageMode(CENTER);
+    lad.resize(w, h);
+    if (c == 1) {
+      image(lad, x, y);
+    } else if (c == 2) {
+      image(lad, x, y);
+      image(lad, x, y-15);
+    } else if (c == 3) {
+      image(lad, x, y);
+      image(lad, x, y-15);
+      image(lad, x, y-30);
+    } else if (c == 4) {
+      image(lad, x, y);
+      image(lad, x, y-15);
+      image(lad, x, y-30);
+      image(lad, x, y-45);
+    } else if (c == 5) {
+      image(lad, x, y);
+      image(lad, x, y-15);
+      image(lad, x, y-30);
+      image(lad, x, y-45);
+      image(lad, x, y-60);
+    } else if (c == 6) {
+      image(lad, x, y);
+      image(lad, x, y-15);
+      image(lad, x, y-30);
+      image(lad, x, y-45);
+      image(lad, x, y-60);
+      image(lad, x, y-75);
+    } else if (c == 7) {
+      image(lad, x, y);
+      image(lad, x, y-15);
+      image(lad, x, y-30);
+      image(lad, x, y-45);
+      image(lad, x, y-60);
+      image(lad, x, y-75);
+      image(lad, x, y-90);
+    } else if (c == 8) {
+      image(lad, x, y);
+      image(lad, x, y-15);
+      image(lad, x, y-30);
+      image(lad, x, y-45);
+      image(lad, x, y-60);
+      image(lad, x, y-75);
+      image(lad, x, y-90);
+      image(lad, x, y-105);
+    } else if (c == 9) {
+      image(lad, x, y);
+      image(lad, x, y-15);
+      image(lad, x, y-30);
+      image(lad, x, y-45);
+      image(lad, x, y-60);
+      image(lad, x, y-75);
+      image(lad, x, y-90);
+      image(lad, x, y-105);
+      image(lad, x, y-120);
+    } else if (c == 10) {
+      image(lad, x, y);
+      image(lad, x, y-15);
+      image(lad, x, y-30);
+      image(lad, x, y-45);
+      image(lad, x, y-60);
+      image(lad, x, y-75);
+      image(lad, x, y-90);
+      image(lad, x, y-105);
+      image(lad, x, y-120);
+      image(lad, x, y-135);
+    } else if (c == 11) {
+      image(lad, x, y);
+      image(lad, x, y-15);
+      image(lad, x, y-30);
+      image(lad, x, y-45);
+      image(lad, x, y-60);
+      image(lad, x, y-75);
+      image(lad, x, y-90);
+      image(lad, x, y-105);
+      image(lad, x, y-120);
+      image(lad, x, y-135);
+      image(lad, x, y-150);
+    }
   }
 }
