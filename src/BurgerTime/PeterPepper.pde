@@ -11,14 +11,12 @@ class Chef {
     w = 16;
     h = 16;
     p = loadImage("PeterPepper.png");
-    p1 = loadImage("PeterPepper1.png");
-    p2 = loadImage("PeterPepper2.png");
+    pd1 = loadImage("PeterPepper1.png");
+    pd2 = loadImage("PeterPepper2.png");
     pr1 = loadImage("PeterPepperRight1.png");
     pr2 = loadImage("PeterPepperRight2.png");
     pl1 = loadImage("PeterPepperLeft.png");
     pl2 = loadImage("PeterPepperLeft1.png");
-    pd1 = loadImage("PeterPepDown1.png");
-    pd2 = loadImage("PeterPepDown2.png");
     pu1 = loadImage("PeterPepUp1.png");
     pu2 = loadImage("PeterPepUp2.png");
     xspeed = 0;
