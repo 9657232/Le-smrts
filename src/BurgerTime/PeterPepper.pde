@@ -1,7 +1,7 @@
 class Chef {
   // Member Variables
   int x, y, w, h, xspeed, move, animation, anim2, yspeed;
-  float ladt,ladv;
+  float ladt, ladv;
   PImage p, p1, p2, pr1, pr2, pl1, pl2, pd1, pd2, pu1, pu2;
 
   // Constructor
@@ -11,12 +11,14 @@ class Chef {
     w = 16;
     h = 16;
     p = loadImage("PeterPepper.png");
-    pd1 = loadImage("PeterPepper1.png");
-    pd2 = loadImage("PeterPepper2.png");
+    p1 = loadImage("PeterPepper1.png");
+    p2 = loadImage("PeterPepper2.png");
     pr1 = loadImage("PeterPepperRight1.png");
     pr2 = loadImage("PeterPepperRight2.png");
     pl1 = loadImage("PeterPepperLeft.png");
     pl2 = loadImage("PeterPepperLeft1.png");
+    pd1 = loadImage("PeterPepDown1.png");
+    pd2 = loadImage("PeterPepDown2.png");
     pu1 = loadImage("PeterPepUp1.png");
     pu2 = loadImage("PeterPepUp2.png");
     xspeed = 0;
@@ -26,14 +28,13 @@ class Chef {
   // Member Methods
 
   void display() {
-    println(animation, anim2);
     imageMode(CENTER);
     if (keyPressed == true) {
       if (key == 'a' || key == 'A' || keyCode == LEFT) {
         xspeed = -1;
+      } else {
+        xspeed = 0;
       }
-    } else {
-      xspeed = 0;
     }
     if (keyPressed == true) {
       if (key == 'd' || key == 'D' || keyCode == RIGHT) {
@@ -44,14 +45,14 @@ class Chef {
     }
     if (keyPressed == true) {
       if (key == 'w' || key == 'W' || keyCode == UP) {
-          image(p, x, y);
-          ladv = ladv+.1;
-          anim2 = 0;
-          animation = 0;
-          if (ladv>0 && ladv<.5) {
-            image(pu1, x, y);
-        } else if (ladv>=.5 && ladv<1.1) {
-          image(pu2, x, y-2);
+        ladv = ladv+1;
+        anim2 = 0;
+        animation = 0;
+        ladt = 0;
+        if (ladv>=0&&ladv<=.5) {
+          image(pu2, x, y);
+        } else if (ladv>.5 && ladv<1.1) {
+          image(pu1, x, y);
         }
         if (ladv >=1) {
           ladv = 0;
@@ -64,13 +65,13 @@ class Chef {
     if (keyPressed == true) {
       if (key == 's' || key == 'S' || keyCode == DOWN) {
         ladt = ladt+.1;
-        yspeed = 1;
         anim2 = 0;
         animation = 0;
+        ladv = 0;
         if (ladt>0 && ladt<.5) {
           image(pd1, x, y);
         } else if (ladt>=.5 && ladt<1.1) {
-          image(pd2, x, y-2);
+          image(pd2, x, y);
         }
         if (ladt >=1) {
           ladt = 0;
