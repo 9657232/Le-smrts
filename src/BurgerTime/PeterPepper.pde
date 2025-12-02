@@ -45,7 +45,7 @@ class Chef {
     }
     if (keyPressed == true) {
       if (key == 'w' || key == 'W' || keyCode == UP) {
-        ladv = ladv+1;
+        ladv = ladv+.1;
         anim2 = 0;
         animation = 0;
         ladt = 0;
