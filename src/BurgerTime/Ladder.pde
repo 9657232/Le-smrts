@@ -1,5 +1,5 @@
 class Ladder {
-  int x, y, w, h, c, m;
+  int x, y, w, h, c, up, down;
   PImage lad;
 
   // Constructor
@@ -10,19 +10,29 @@ class Ladder {
     this.h = h;
     this.c = c;
     lad = loadImage("ladd.png");
-    m = 0;
   }
 
   void display() {
-    println(m);
     if (c1.x<=x+8 && c1.x>=x-8) {
-      if (key == 'w' || key == 'W' || keyCode == UP) {
-        m = 1;
+      up = 1;
+    }
+    if (c1.x<=x+8 && c1.x>=x-8) {
+      if (key == 'w' || key == 'W' || keyCode == UP ) {
         c1.yspeed = -1;
         c1.x = x;
+        up = 1;
+      } else {
+        up = 0;
       }
-    } else {
-      m = 0;
+      if (c1.x<=x+8 && c1.x>=x-8) {
+        if (key == 's' || key == 'S' || keyCode == DOWN) {
+          c1.yspeed = 1;
+          c1.x = x;
+          down = 1;
+        } else {
+          down = 0;
+        }
+      }
     }
     imageMode(CENTER);
     lad.resize(w, h);
