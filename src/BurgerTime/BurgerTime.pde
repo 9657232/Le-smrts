@@ -1,141 +1,29 @@
-class Chef {
-  // Member Variables
-  int x, y, w, h, xspeed, move, animation, anim2, yspeed;
-  float ladt, ladv;
-  PImage p, p1, p2, pr1, pr2, pl1, pl2, pd1, pd2, pu1, pu2;
+ArrayList<Ladder> ladders;
+Ingredients i1;
+Chef c1;
+Enemy e1;
+Ladder l1;
+Info p1;
 
-  // Constructor
-  Chef() {
-    x = 100;
-    y = 232;
-    w = 16;
-    h = 16;
-    p = loadImage("PeterPepper.png");
-    p1 = loadImage("PeterPepper1.png");
-    p2 = loadImage("PeterPepper2.png");
-    pr1 = loadImage("PeterPepperRight1.png");
-    pr2 = loadImage("PeterPepperRight2.png");
-    pl1 = loadImage("PeterPepperLeft.png");
-    pl2 = loadImage("PeterPepperLeft1.png");
-    pd1 = loadImage("PeterPepDown1.png");
-    pd2 = loadImage("PeterPepDown2.png");
-    pu1 = loadImage("PeterPepUp1.png");
-    pu2 = loadImage("PeterPepUp2.png");
-    xspeed = 0;
-    move = 0;
+void setup() {
+  i1 = new Ingredients();
+  c1 = new Chef();
+  e1 = new Enemy();
+  ladders = new ArrayList<Ladder>();
+  ladders.add(new Ladder(width/2, height-10, 16, 15,8));
+  ladders.add(new Ladder(40, height-10, 16, 15,11));
+  p1 = new Info();
+  size(256, 240);
+}
+
+void draw() {
+  background(0);
+  for (Ladder l : ladders) {
+    l.display();
   }
-
-  // Member Methods
-
-  void display() {
-    println(ladv);
-    imageMode(CENTER);
-    if (keyPressed == true) {
-      if (key == 'a' || key == 'A' || keyCode == LEFT) {
-        xspeed = -1;
-      }
-    } else {
-      xspeed = 0;
-    }
-    if (keyPressed == true) {
-      if (key == 'd' || key == 'D' || keyCode == RIGHT) {
-        xspeed = 1;
-      }
-    } else {
-      xspeed = 0;
-    }
-    if (keyPressed == true) {
-      if (key == 'w' || key == 'W' || keyCode == UP) {
-        ladv = ladv+.1;
-        anim2 = 0;
-        animation = 0;
-        ladt = 0;
-        if (ladv>=0&&ladv<=.5) {
-          image(pu2, x, y);
-        } else if (ladv>.5 && ladv<1.1) {
-          image(pu1, x, y);
-        }
-        if (ladv >=1) {
-          ladv = 0;
-        }
-      }
-    } else {
-      yspeed = 0;
-      ladv = 0;
-    }
-    if (keyPressed == true) {
-      if (key == 's' || key == 'S' || keyCode == DOWN) {
-        ladt = ladt+.1;
-        anim2 = 0;
-        animation = 0;
-        ladv = 0;
-        if (ladt>0 && ladt<.5) {
-          image(pd1, x, y);
-        } else if (ladt>=.5 && ladt<1.1) {
-          image(pd2, x, y);
-        }
-        if (ladt >=1) {
-          ladt = 0;
-        }
-      }
-    } else {
-      yspeed = 0;
-      ladt = 0;
-    }
-    if (keyPressed == true) {
-      if (key == 'd' || key == 'D' || keyCode == RIGHT) {
-        animation = animation+1;
-        anim2 = 0;
-      }
-      if (animation>0 && animation<=6) {
-        image(pr1, x, y);
-      } else if (animation>6 && animation<11) {
-        image(pr2, x, y-2);
-      }
-      if (animation>=10) {
-        animation = 1;
-      }
-    }
-    if (keyPressed == true) {
-      if (key == 'a' || key == 'A' || keyCode == LEFT) {
-        anim2 = anim2+1;
-        animation = 0;
-      }
-      if (anim2>0 && anim2<=6) {
-        image(pl1, x, y);
-      } else if (anim2>6 && anim2<11) {
-        image(pl2, x, y-2);
-      }
-      if (anim2>=10) {
-        anim2 = 1;
-      }
-    }
-    if (keyPressed == false) {
-      image(p, x, y);
-      anim2 = 0;
-      animation = 0;
-      ladt = 0;
-    }
-  }
-
-
-  void move() {
-    if (keyPressed == true) {
-      move = move+1;
-      if (move>0) {
-        move = 0;
-        x = x+xspeed;
-        y = y+yspeed;
-        if (x > width-32) {
-          x=width-32;
-          anim2=0;
-          animation=0;
-        } else if (x < 32) {
-          x = 32;
-          anim2 = 0;
-          animation = 0;
-        }
-      }
-    }
-  }
+  i1.display();
+  c1.display();
+  e1.display();
+  p1.display();
+  c1.move();
 }
