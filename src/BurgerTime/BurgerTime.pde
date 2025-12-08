@@ -1,5 +1,6 @@
 ArrayList<Ladder> ladders;
 ArrayList<Ingredient> ingredients;
+ArrayList<Enemy> enemies;
 ArrayList<Floor> floors;
 Ingredient i1;
 Chef c1;
@@ -14,6 +15,7 @@ void setup() {
   ladders = new ArrayList<Ladder>();
   ingredients = new ArrayList<Ingredient>();
   floors = new ArrayList<Floor>();
+  enemies = new ArrayList<Enemy>();
   ladders.add(new Ladder(200, height-10, 16, 15, 8, height-5, 120));
   ladders.add(new Ladder(100, height-10, 16, 15, 4, height-5, 180));
   ladders.add(new Ladder(150, 180-10, 16, 15, 4, 180-5, 120));
@@ -22,6 +24,7 @@ void setup() {
   ingredients.add(new Ingredient(3, 182,2));
   ingredients.add(new Ingredient(3, 173,1));
   floors.add(new Floor(0,1,100,1));
+  enemies.add(new Enemy(100, 50, 16, 16,1,1))
   p1 = new Info();
   size(256, 240);
 }
@@ -40,6 +43,10 @@ void draw() {
   f.display();
   f.collision();
   }
+for (Enemy e : enemies) {
+f.display();
+f.move();
+}
   c1.display();
   e1.display();
   p1.display();
