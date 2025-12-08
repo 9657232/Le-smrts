@@ -1,26 +1,37 @@
 class Enemy {
   // Member Variables
-  int x, y, w, h, speed;
-  //PImage i1;
+  int x, y, w, h, xspeed, yspeed, speed;
+  PImage enem1;
 
   // Constructor
-  Enemy() {
-    x = 150;
-    y = 30;
-    w = 16;
-    h = 16;
+  Enemy(int x, int y, int w, int w, int speed) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.speed = speed;
   }
 
   // Member Methods
 
   void display() {
     noStroke();
-    fill(#DE0B12);
-    //image(i1,x,y);
+    fill(255,0,0);
+    image(enem1,x,y);
     rectMode(CENTER);
     rect(x,y,w,h);
   }
-
+void find() {
+if(c1.x>x) {
+xspeed = speed;
+} else if (c1.x<x) {
+xspeed = -speed;
+} else if (c1.x == x) {
+xspeed = 0;
+}
+}
   void move() {
+x = x+xspeed;
+y = y+yspeed;
   }
 }
