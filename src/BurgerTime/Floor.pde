@@ -1,7 +1,7 @@
 class Floor {
   int x, y, w, h, yType, ctype;
   color c1;
-  //boolean ;
+  boolean onLadder, offLadder;
 
   Floor(int x, int yType, int w, int ctype) {
     this.x = x;
@@ -49,6 +49,10 @@ class Floor {
     rect(x, y, w, h);
   }
   void collision() {
-  
+if(keyPressed == true) {
+  if (c1.y>=y&&c1.y<=y-20&&c1.x>=x+8&&c1.x<=w-8&&key == 'a'||key == 'd') {
+     c1.y = y-9;
+      }
+    }
   }
 }
