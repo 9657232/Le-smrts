@@ -50,7 +50,7 @@ class Floor {
   }
   void collision() {
 if(keyPressed == true) {
-  if (c1.y>=y&&c1.y<=y-20&&c1.x>=x+8&&c1.x<=w-8&&key == 'a'||key == 'd') {
+  if (c1.y>=y-4&&c1.y<=y-20&&c1.x>=x+8&&c1.x<=w-8&&key == 'a'||key == 'd') {
      c1.y = y-9;
       }
     }
