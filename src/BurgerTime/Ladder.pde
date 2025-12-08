@@ -1,35 +1,40 @@
 class Ladder {
-  int x, y, w, h, c, a;
-  PImage lad;
+  int x, y, w, h, c, a, hHeight, lHeight ;
+  PImage lad, p;
 
   // Constructor
-  Ladder(int x, int y, int w, int h, int c) {
+  Ladder(int x, int y, int w, int h, int c, int lHeight, int hHeight) {
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
     this.c = c;
+    this.hHeight = hHeight;
+    this.lHeight = lHeight;
     lad = loadImage("ladd.png");
+    p = loadImage("PeterPepper.png");
   }
-
   void display() {
-    println(a);
-    if (c1.x<=x+8 && c1.x>=x-8) {
-      a = a+1;
-    } else {
-      a = 0;
-    }
-
-    if (c1.x<=x+8 && c1.x>=x-8) {
+    if (c1.x<=x+8 && c1.x>=x-8&&c1.y<=lHeight+20) {
       if (key == 'w' || key == 'W' || keyCode == UP ) {
+        c1.still = false;
+        c1.ladv = c1.ladv+.1;
         c1.yspeed = -1;
         c1.x = x;
+        if (c1.ladv>=.0&&c1.ladv<=.5) {
+          image(c1.pu2, c1.x, c1.y);
+        }
       } else {
       }
-      if (c1.x<=x+8 && c1.x>=x-8) {
+      if (c1.x<=x+8 && c1.x>=x-8&&c1.y>=hHeight-20) {
         if (key == 's' || key == 'S' || keyCode == DOWN) {
+          c1.still = false;
+          c1.ladt = c1.ladt+.1;
           c1.yspeed = 1;
           c1.x = x;
+          if (c1.ladt>.0 && c1.ladt<.5) {
+            image(c1.pd1, c1.x, c1.y);
+          }
         } else {
         }
       }
@@ -113,6 +118,13 @@ class Ladder {
       image(lad, x, y-120);
       image(lad, x, y-135);
       image(lad, x, y-150);
+    }
+    if (c1.y>=lHeight-6 && c1.yspeed==1 && c1.x<=x+8 && c1.x>=x-8) {
+      c1.yspeed = 0;
+    }
+
+    if (c1.y<=hHeight-10 && c1.yspeed==-1 && c1.x<=x+8 && c1.x>=x-8) {
+      c1.yspeed = 0;
     }
   }
 }
