@@ -1,6 +1,7 @@
 class Chef {
   // Member Variables
   int x, y, w, h, xspeed, move, animation, anim2, yspeed;
+  boolean still;
   float ladt, ladv;
   PImage p, p1, p2, pr1, pr2, pl1, pl2, pd1, pd2, pu1, pu2;
 
@@ -31,6 +32,7 @@ class Chef {
     imageMode(CENTER);
     if (keyPressed == true) {
       if (key == 'a' || key == 'A' || keyCode == LEFT) {
+        still = false;
         xspeed = -1;
       } else {
         xspeed = 0;
@@ -38,6 +40,7 @@ class Chef {
     }
     if (keyPressed == true) {
       if (key == 'd' || key == 'D' || keyCode == RIGHT) {
+        still = false;
         xspeed = 1;
       }
     } else {
@@ -45,11 +48,9 @@ class Chef {
     }
     if (keyPressed == true) {
       if (key == 'w' || key == 'W' || keyCode == UP) {
-        ladv = ladv+.1;
-        anim2 = 0;
         animation = 0;
         ladt = 0;
-        if (ladv>=0&&ladv<=.5) {
+        if (ladv>=.1&&ladv<=.5) {
           image(pu2, x, y);
         } else if (ladv>.5 && ladv<1.1) {
           image(pu1, x, y);
@@ -64,11 +65,9 @@ class Chef {
     }
     if (keyPressed == true) {
       if (key == 's' || key == 'S' || keyCode == DOWN) {
-        ladt = ladt+.1;
-        anim2 = 0;
         animation = 0;
         ladv = 0;
-        if (ladt>0 && ladt<.5) {
+        if (ladt>.1 && ladt<.5) {
           image(pd1, x, y);
         } else if (ladt>=.5 && ladt<1.1) {
           image(pd2, x, y);
@@ -83,6 +82,7 @@ class Chef {
     }
     if (keyPressed == true) {
       if (key == 'd' || key == 'D' || keyCode == RIGHT) {
+        still = false;
         animation = animation+1;
         anim2 = 0;
       }
@@ -97,6 +97,7 @@ class Chef {
     }
     if (keyPressed == true) {
       if (key == 'a' || key == 'A' || keyCode == LEFT) {
+        still = false;
         anim2 = anim2+1;
         animation = 0;
       }
@@ -109,11 +110,15 @@ class Chef {
         anim2 = 1;
       }
     }
-    if (keyPressed == false) {
+
+    if (keyPressed == true&&still == true) {
       image(p, x, y);
       anim2 = 0;
       animation = 0;
       ladt = 0;
+    }
+    if (keyPressed == false) {
+      image(p, x, y);
     }
   }
 
