@@ -1,18 +1,20 @@
 class Floor {
-  int x, y, w, h, yType, ctype;
-  color c1;
+  int x, y, w, h, yType, ctype, wtype, xtype;
+  color co1;
   boolean onLadder, offLadder;
 
-  Floor(int x, int yType, int w, int ctype) {
-    this.x = x;
+  Floor(int xtype, int yType, int wtype, int ctype) {
+    this.xtype = xtype;
     this.yType = yType;
-    this.w = w;
+    this.wtype = wtype;
     this.ctype = ctype;
+    w = (wtype*22)+21;
+    x = (xtype*22)+29;
     h = 2;
     if (ctype == 1) {
-      c1 = #0041FF;
+      co1 = #0041FF;
     } else if (ctype == 2) {
-      c1 = #3BEAFF;
+      co1 = #3BEAFF;
     }
     if (yType == 1) {
       y = 200;
@@ -43,16 +45,31 @@ class Floor {
       y = 24;
     }
   }
+  void collide() {
+    if (keyPressed == true&&c1.y<=y-6&&c1.y>=y-10&&c1.x>=x+8&&c1.x<=(w+x)+8&&key=='d'||key == 'D'||keyCode == RIGHT) {
+      c1.animation = c1.animation+1;
+      c1.xspeed = 1;
+      c1.still = false;
+      c1.y = y-8;
+    }
+    if (keyPressed == true&&c1.y<=y-6&&c1.y>=y-10&&c1.x>=x+8&&c1.x<=(w+x)+8&&key=='a'||key == 'A'||keyCode == LEFT) {
+      c1.anim2 = c1.anim2+1;
+      c1.xspeed = -1;
+      c1.still = false;
+      c1.y = y-8;
+    }
+  }
   void display() {
     rectMode(CORNER);
-    fill(c1);
+    fill(co1);
     rect(x, y, w, h);
-  }
-  void collision() {
-if(keyPressed == true) {
-  if (c1.y>=y-4&&c1.y<=y-20&&c1.x>=x+8&&c1.x<=w-8&&key == 'a'||key == 'd') {
-     c1.y = y-9;
-      }
+    if (wtype>=1) {
+      fill(#3BEAFF);
+      rect(x, y, 22, h);
+    }
+    if (wtype>=3) {
+      fill(#3BEAFF);
+      rect(x+44, y, 22, h);
     }
   }
 }
