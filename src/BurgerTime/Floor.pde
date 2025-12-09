@@ -1,75 +1,41 @@
-class Floor {
-  int x, y, w, h, yType, ctype, wtype, xtype;
-  color co1;
-  boolean onLadder, offLadder;
+class Info {
+  // Member Variables
+  int x, y, x2, x3, y2, up, hi, pep;
+  ;
+  //PImage i1;
 
-  Floor(int xtype, int yType, int wtype, int ctype) {
-    this.xtype = xtype;
-    this.yType = yType;
-    this.wtype = wtype;
-    this.ctype = ctype;
-    w = (wtype*22)+21;
-    x = (xtype*22)+29;
-    h = 2;
-    if (ctype == 1) {
-      co1 = #0041FF;
-    } else if (ctype == 2) {
-      co1 = #3BEAFF;
-    }
-    if (yType == 1) {
-      y = 200;
-    }
-    if (yType == 1) {
-      y = 200;
-    } else if (yType == 2) {
-      y = 184;
-    } else if (yType == 3) {
-      y = 168;
-    } else if (yType == 4) {
-      y = 152;
-    } else if (yType == 5) {
-      y = 136;
-    } else if (yType == 6) {
-      y = 120;
-    } else if (yType == 7) {
-      y = 104;
-    } else if (yType == 8) {
-      y = 88;
-    } else if (yType == 9) {
-      y = 72;
-    } else if (yType == 10) {
-      y = 56;
-    } else if (yType == 11) {
-      y = 40;
-    } else if (yType == 12) {
-      y = 24;
-    }
+  // Constructor
+  Info() {
+    x = 50-16;
+    y = 12;
+    x2 = 100-16;
+    x3 = width-32;
+    y2 = 27;
+    up = 0;
+    hi = 28000;
+    pep = 5;
   }
-  void collide() {
-    if (keyPressed == true&&c1.y<=y-6&&c1.y>=y-10&&c1.x>=x+8&&c1.x<=(w+x)+8&&key=='d'||key == 'D'||keyCode == RIGHT) {
-      c1.animation = c1.animation+1;
-      c1.xspeed = 1;
-      c1.still = false;
-      c1.y = y-8;
-    }
-    if (keyPressed == true&&c1.y<=y-6&&c1.y>=y-10&&c1.x>=x+8&&c1.x<=(w+x)+8&&key=='a'||key == 'A'||keyCode == LEFT) {
-      c1.anim2 = c1.anim2+1;
-      c1.xspeed = -1;
-      c1.still = false;
-      c1.y = y-8;
-    }
-  }
+
+  // Member Methods
+
   void display() {
-    rectMode(CORNER);
-    fill(co1);
-    rect(x, y, w, h);
-    if (wtype>=1) {
-      fill(#3BEAFF);
-      rect(x, y, 22, h);
-    }
-    if (wtype>=3) {
-      fill(#3BEAFF);
-      rect(x+44, y, 22, h);
-    }
+    textSize(16);
+    noStroke();
+    fill(255, 0, 0);
+    textAlign(LEFT);
+    text("1UP", x, y);
+    text("HI-SCORE", x2, y);
+    fill(255);
+    text(up,x,y2);
+    text(hi,x2,y2);
+    fill(0, 255, 0);
+    textAlign(RIGHT);
+    textSize(12);
+    text("PEPPER", x3, y);
+    fill(255);
+    text(pep,x3,y2);
+  }
+
+  void move() {
   }
 }
