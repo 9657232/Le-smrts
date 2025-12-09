@@ -11,20 +11,25 @@ Floor f1;
 
 void setup() {
   c1 = new Chef();
-  e1 = new Enemy();
   ladders = new ArrayList<Ladder>();
   ingredients = new ArrayList<Ingredient>();
   floors = new ArrayList<Floor>();
   enemies = new ArrayList<Enemy>();
-  ladders.add(new Ladder(200, height-10, 16, 15, 8, height-5, 120));
-  ladders.add(new Ladder(100, height-10, 16, 15, 4, height-5, 180));
-  ladders.add(new Ladder(150, 180-10, 16, 15, 4, 180-5, 120));
-  ingredients.add(new Ingredient(3, 200,4));
-  ingredients.add(new Ingredient(3, 191,3));
-  ingredients.add(new Ingredient(3, 182,2));
-  ingredients.add(new Ingredient(3, 173,1));
-  floors.add(new Floor(0,1,100,1));
-  enemies.add(new Enemy(100, 50, 16, 16,1,1))
+  ladders.add(new Ladder(1, height-47, 10));
+  ladders.add(new Ladder(2, height-47, 10));
+  ladders.add(new Ladder(3, height-47, 10));
+  ladders.add(new Ladder(4, height-47, 10));
+  ladders.add(new Ladder(5, height-47, 10));
+  ladders.add(new Ladder(6, height-47, 10));
+  ladders.add(new Ladder(7, height-47, 10));
+  ladders.add(new Ladder(8, height-47, 10));
+  ladders.add(new Ladder(9, height-47, 10));
+  ingredients.add(new Ingredient(3, 200, 4));
+  ingredients.add(new Ingredient(3, 191, 3));
+  ingredients.add(new Ingredient(3, 182, 2));
+  ingredients.add(new Ingredient(3, 173, 1));
+  floors.add(new Floor(0, 1, 8, 1));
+  enemies.add(new Enemy(100, 50, 16, 16, 1, 1));
   p1 = new Info();
   size(256, 240);
 }
@@ -35,20 +40,20 @@ void draw() {
   for (Ladder l : ladders) {
     l.display();
   }
+  for (Floor f : floors) {
+    f.display();
+    f.collide();
+  }
   for (Ingredient i : ingredients) {
     i.display();
     i.move();
   }
-  for (Floor f : floors) {
-  f.display();
-  f.collision();
+  for (Enemy e : enemies) {
+    e.display();
+    e.move();
+    e.find();
   }
-for (Enemy e : enemies) {
-f.display();
-f.move();
-}
   c1.display();
-  e1.display();
   p1.display();
   c1.move();
 }
