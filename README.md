@@ -6,7 +6,7 @@ Mars-Coder
 
 Ben-Graphicperson
 
-[BurgerTime(https://github.com/9657232/Lesmrts/blob/320370c721cfe076e524d121ac0fd0f2920388df/Images/burgertime.png)
+[BurgerTime](https://github.com/9657232/Lesmrts/blob/320370c721cfe076e524d121ac0fd0f2920388df/Images/burgertime.png)
 
 Its a game where you have to avoid enemies and make burgers
 
