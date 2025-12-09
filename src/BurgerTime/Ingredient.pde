@@ -1,15 +1,40 @@
 class Ingredient {
   // Member Variables
-  int x, x1, x2, x3, y, w, h, speed, xtype, type, xx, m, m1, m2, m3, timer;
+  int x, x1, x2, x3, y, w, h, speed, xtype, type,yType, xx, m, m1, m2, m3, timer;
   boolean f1, f2, f3, f4;
   PImage i, i1, i2, i3;
 
   // Constructor
-  Ingredient(int xtype, int y, int type) {
+  Ingredient(int xtype, int yType, int type) {
 
     this.xtype = xtype;
-    this.y = y;
+    this.yType = yType;
     this.type = type;
+    if (yType == 1) {
+      y = 200;
+    } else if (yType == 2) {
+      y = 184;
+    } else if (yType == 3) {
+      y = 168;
+    } else if (yType == 4) {
+      y = 152;
+    } else if (yType == 5) {
+      y = 136;
+    } else if (yType == 6) {
+      y = 120;
+    } else if (yType == 7) {
+      y = 104;
+    } else if (yType == 8) {
+      y = 88;
+    } else if (yType == 9) {
+      y = 72;
+    } else if (yType == 10) {
+      y = 56;
+    } else if (yType == 11) {
+      y = 40;
+    } else if (yType == 12) {
+      y = 24;
+    }
     x = 52;
     x1 = 104;
     x2 = 156;
