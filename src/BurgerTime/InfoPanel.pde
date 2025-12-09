@@ -6,11 +6,11 @@ class Info {
 
   // Constructor
   Info() {
-    x = 50;
-    y = 100;
-    x2 = 100;
-    x3 = 256;
-    y2 = 115;
+    x = 50-16;
+    y = 12;
+    x2 = 100-16;
+    x3 = width-32;
+    y2 = 27;
     up = 0;
     hi = 28000;
     pep = 5;
