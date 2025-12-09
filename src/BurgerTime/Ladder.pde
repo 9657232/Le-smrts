@@ -1,22 +1,20 @@
 class Ladder {
-  int x, y, w, h, c, a, hHeight, lHeight ;
+  int x, y, c, a, xtype;
   PImage lad, p;
 
   // Constructor
-  Ladder(int x, int y, int w, int h, int c, int lHeight, int hHeight) {
-    this.x = x;
+  Ladder(int xtype, int y, int c) {
+    this.xtype = xtype;
     this.y = y;
-    this.w = w;
-    this.h = h;
     this.c = c;
-    this.hHeight = hHeight;
-    this.lHeight = lHeight;
     lad = loadImage("ladd.png");
     p = loadImage("PeterPepper.png");
+    x = (xtype*22)+18;
   }
   void display() {
-    if (c1.x<=x+8 && c1.x>=x-8&&c1.y<=lHeight+20) {
-      if (key == 'w' || key == 'W' || keyCode == UP ) {
+    println(c1.yspeed);
+    if (c1.x<=x+8 && c1.x>=x-8&&c1.y>y-(c*15)&&c1.y<y+8) {
+      if (key == 'w' || key == 'W' || keyCode == UP) {
         c1.still = false;
         c1.ladv = c1.ladv+.1;
         c1.yspeed = -1;
@@ -24,23 +22,23 @@ class Ladder {
         if (c1.ladv>=.0&&c1.ladv<=.5) {
           image(c1.pu2, c1.x, c1.y);
         }
-      } else {
       }
-      if (c1.x<=x+8 && c1.x>=x-8&&c1.y>=hHeight-20) {
-        if (key == 's' || key == 'S' || keyCode == DOWN) {
-          c1.still = false;
-          c1.ladt = c1.ladt+.1;
-          c1.yspeed = 1;
-          c1.x = x;
-          if (c1.ladt>.0 && c1.ladt<.5) {
-            image(c1.pd1, c1.x, c1.y);
-          }
-        } else {
+    } else {
+    }
+    if (c1.x<=x+8 && c1.x>=x-8&&c1.y<y-1&&c1.y>(y-8)-(c*15)) {
+      if (key == 's' || key == 'S' || keyCode == DOWN) {
+        c1.still = false;
+        c1.ladt = c1.ladt+.1;
+        c1.yspeed = 1;
+        c1.x = x;
+        if (c1.ladt>.0 && c1.ladt<.5) {
+          image(c1.pd1, c1.x, c1.y);
         }
+      } else {
       }
     }
     imageMode(CENTER);
-    lad.resize(w, h);
+    lad.resize(12,15);
     if (c == 1) {
       image(lad, x, y);
     } else if (c == 2) {
@@ -119,11 +117,11 @@ class Ladder {
       image(lad, x, y-135);
       image(lad, x, y-150);
     }
-    if (c1.y>=lHeight-6 && c1.yspeed==1 && c1.x<=x+8 && c1.x>=x-8) {
+    if (c1.y<=y-(c*15) && c1.yspeed==-1 && c1.x<=x+8 && c1.x>=x-8) {
       c1.yspeed = 0;
     }
 
-    if (c1.y<=hHeight-10 && c1.yspeed==-1 && c1.x<=x+8 && c1.x>=x-8) {
+    if (c1.y>=y-1 && c1.yspeed==1 && c1.x<=x+8 && c1.x>=x-8) {
       c1.yspeed = 0;
     }
   }
