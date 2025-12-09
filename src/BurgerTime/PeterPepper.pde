@@ -8,7 +8,7 @@ class Chef {
   // Constructor
   Chef() {
     x = 100;
-    y = 232;
+    y = 192;
     w = 16;
     h = 16;
     p = loadImage("PeterPepper.png");
@@ -30,19 +30,8 @@ class Chef {
 
   void display() {
     imageMode(CENTER);
-    if (keyPressed == true) {
-      if (key == 'a' || key == 'A' || keyCode == LEFT) {
-        still = false;
-        xspeed = -1;
-      } else {
-        xspeed = 0;
-      }
-    }
-    if (keyPressed == true) {
-      if (key == 'd' || key == 'D' || keyCode == RIGHT) {
-        still = false;
-        xspeed = 1;
-      }
+    if (keyPressed == true&&key == 'a' || key == 'A' || keyCode == LEFT) {
+    } else if (keyPressed == true&&key == 'd' || key == 'D' || keyCode == RIGHT) {
     } else {
       xspeed = 0;
     }
@@ -82,8 +71,6 @@ class Chef {
     }
     if (keyPressed == true) {
       if (key == 'd' || key == 'D' || keyCode == RIGHT) {
-        still = false;
-        animation = animation+1;
         anim2 = 0;
       }
       if (animation>0 && animation<=6) {
@@ -97,8 +84,6 @@ class Chef {
     }
     if (keyPressed == true) {
       if (key == 'a' || key == 'A' || keyCode == LEFT) {
-        still = false;
-        anim2 = anim2+1;
         animation = 0;
       }
       if (anim2>0 && anim2<=6) {
