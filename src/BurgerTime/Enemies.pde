@@ -4,44 +4,44 @@ class Enemy {
   PImage enem1;
 
   // Constructor
-  Enemy(int x, int y, int w, int h, int speed, type) {
+  Enemy(int x, int y, int w, int h, int type, int speed) {
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
     this.speed = speed;
     this.type = type;
-    //if(type == '1') {
-    //enem1 = loadImage("");
-    //} else if(type == '2') {
-    //enem1 = loadImage("");
-    //} else if(type == '3') {
-    //enem1 = loadImage("");
-    //} else if(type == '4') {
-    //enem1 = loadImage("");
-    //}
+    if(type == '1') {
+    enem1 = loadImage("");
+    } else if(type == '2') {
+    enem1 = loadImage("");
+    } else if(type == '3') {
+    enem1 = loadImage("");
+    } else if(type == '4') {
+    enem1 = loadImage("");
+    }
   }
 
   // Member Methods
 
   void display() {
     noStroke();
-    fill(255,0,0);
+    fill(255, 0, 0);
     //image(enem1,x,y);
     rectMode(CENTER);
-    rect(x,y,w,h);
+    rect(x, y, w, h);
   }
-void find() {
-if(c1.x>x) {
-xspeed = speed;
-} else if (c1.x<x) {
-xspeed = -speed;
-} else if (c1.x == x) {
-xspeed = 0;
-}
-}
+  void find() {
+    if (x<c1.x) {
+      xspeed = speed;
+    } else if (x>c1.x) {
+      xspeed = -speed;
+    } else if (c1.x == x) {
+      xspeed = 0;
+    }
+  }
   void move() {
-x = x+xspeed;
-y = y+yspeed;
+    x = x+xspeed;
+    y = y+yspeed;
   }
 }
