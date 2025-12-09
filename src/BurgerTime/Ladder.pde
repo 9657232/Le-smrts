@@ -1,18 +1,42 @@
 class Ladder {
-  int x, y, c, a, xtype;
+  int x, y, c, a, xtype, yType;
   PImage lad, p;
 
   // Constructor
-  Ladder(int xtype, int y, int c) {
+  Ladder(int xtype, int yType, int c) {
     this.xtype = xtype;
-    this.y = y;
+    this.yType = yType;
     this.c = c;
+    if (yType == 1) {
+      y = 200-8;
+    } else if (yType == 2) {
+      y = 184-8;
+    } else if (yType == 3) {
+      y = 168-8;
+    } else if (yType == 4) {
+      y = 152-8;
+    } else if (yType == 5) {
+      y = 136-8;
+    } else if (yType == 6) {
+      y = 120-8;
+    } else if (yType == 7) {
+      y = 104-8;
+    } else if (yType == 8) {
+      y = 88-8;
+    } else if (yType == 9) {
+      y = 72-8;
+    } else if (yType == 10) {
+      y = 56-8;
+    } else if (yType == 11) {
+      y = 40-8;
+    } else if (yType == 12) {
+      y = 24-8;
+    }
     lad = loadImage("ladd.png");
     p = loadImage("PeterPepper.png");
     x = (xtype*22)+18;
   }
   void display() {
-    println(c1.yspeed);
     if (c1.x<=x+8 && c1.x>=x-8&&c1.y>y-(c*15)&&c1.y<y+8) {
       if (key == 'w' || key == 'W' || keyCode == UP) {
         c1.still = false;
