@@ -7,8 +7,8 @@ class Chef {
 
   // Constructor
   Chef() {
-    x = 100;
-    y = 192;
+    x = 92;
+    y = 100;
     w = 16;
     h = 16;
     p = loadImage("PeterPepper.png");
