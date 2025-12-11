@@ -44,7 +44,10 @@ class Info {
     textAlign(LEFT);
     text("FRAMERATE", 175, y);
     fill(255);
-    text(fr, 175 , y2);
+    if (fr/10>16) {
+      textSize(fr/10);
+    }
+    text(fr, 175, y2);
   }
 
   void screen() {
