@@ -35,7 +35,7 @@ class Floor {
         }
       }
     }
-    if (c1.x<=x+8&& c1.xspeed == -1) {
+    if (c1.x<=x+8&& c1.xspeed == -1&&c1.y<=y&&c1.y>=y-12) {
       c1.x = x+8;
       image(c1.p, c1.x, c1.y);
       c1.still = false;
