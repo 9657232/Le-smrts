@@ -1,8 +1,8 @@
 class Info {
   // Member Variables
-  int x, y, x2, x3, y2, up, hi, pep, transition;
+  int x, y, x2, x3, y2, up, hi, pep, transition, ch = 1;
   PImage s, c;
-  boolean start, choose1, choose2;
+  boolean start, uselesss, start2, password;
 
   // Constructor
   Info() {
@@ -17,8 +17,7 @@ class Info {
     start = false;
     s = loadImage("Placeholder.png");
     c = loadImage("2ndPlaceHolder.png");
-    choose1 = true;
-    choose2 = false;
+    ch = 0;
   }
 
   // Member Methods
@@ -51,29 +50,46 @@ class Info {
   }
 
   void screen() {
+    if (uselesss == false) {
+      ch = 1;
+      uselesss = true;
+    }
+    if (ch==0) {
+      ch=3;
+    }
+    if (ch==4) {
+      ch =1;
+    }
     imageMode(CORNER);
-    if (start == false) {
+    if (start == false&&start2 == false&& password == false) {
       image(s, 0, 0);
       textAlign(CENTER);
       textSize(25);
-      text("ENTER TO START", width/2, height-150);
-      text("1 Player", width/2, height-100);
-      text("2 Player(not ready)", width/2, height-50);
-      if (key == 'w'||key == 'W'||keyCode == UP) {
-        choose1 = true;
-        choose2 = false;
-      } else if (key == 'S'||key=='s'||keyCode==DOWN) {
-        choose1 = false;
-        choose2 = true;
+      text("ENTER TO START", width/2, height-175);
+      text("1 PLAYER", width/2, height-125);
+      text("2 PLAYER(NOT READY)", width/2, height-75);
+      text("INPUT PASSWORD", width/2, height-25);
+      if (ch == 1) {
+        image(c, 90, height-150);
+      } else if (ch == 2) {
+        image(c, 15, height-100);
+      } else if (ch == 3) {
+        image(c, 35, height-50);
       }
-      if (choose2 == true) {
-        image(c, 25, height-75);
-      } else if (choose1 == true) {
-        image(c, 90, height-125);
-      }
-      if (keyCode == 10) {
+      if (keyCode == 10&&ch == 1) {
         start = true;
+      } else if (keyCode == 10&&ch == 2) {
+        start2 = true;
+      } else if (keyCode == 10&&ch == 3) {
+        password = true;
       }
+    } else {
+    ch = -1;
     }
+    //if(password == true) {
+    //ch = -1;
+    //fill(0);
+    //rect(width,height,0,0);
+    //}
   }
 }
