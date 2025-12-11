@@ -1,7 +1,7 @@
 class Ingredient {
   // Member Variables
   int x, x1, x2, x3, y, w, h, speed, xtype, type,yType, xx, m, m1, m2, m3, timer;
-  boolean f1, f2, f3, f4;
+  boolean f, f2, f3, f4, falling;
   PImage i, i1, i2, i3;
 
   // Constructor
@@ -19,7 +19,7 @@ class Ingredient {
     m1 = y;
     m2 = y;
     m3 = y;
-    f1 = false;
+    f = false;
     f2 = false;
     f3 = false;
     f4 = false;
@@ -72,9 +72,9 @@ class Ingredient {
   }
 
   void move() {
-    if (c1.x>=xx-26&&c1.x<=xx-10&&c1.y<=y&&c1.y>=y-20&&f1 == false) {
+    if (c1.x>=xx-26&&c1.x<=xx-10&&c1.y<=y&&c1.y>=y-20&&f == false) {
       m = y+3;
-      f1 = true;
+      f = true;
     }
     if (c1.x>=xx-14&&c1.x<=xx+2&&c1.y<=y&&c1.y>=y-20&&f2 == false) {
       m1 = y+3;
@@ -88,19 +88,22 @@ class Ingredient {
       f4 = true;
       m3 = y+3;
     }
-    if (f1 == true&&f2 == true&&f3 == true&&f4 == true) {
+    if (f == true&&f2 == true&&f3 == true&&f4 == true) {
       m = m+1;
       m1 = m1+1;
       m2 = m2+1;
       m3 = m3+1;
+      falling = true;
     }
-     if (f1 == true&&f2 == true&&f3 == true&&f4 == true&&timer>-1) {
+     if (f == true&&f2 == true&&f3 == true&&f4 == true&&timer>-1) {
      timer = 1;
      }
     if (timer==1) {
     m = m-3;
     m3 = m3-3;
     timer = -1;
+    }
+    if (falling == true) {
     }
   }
 }
