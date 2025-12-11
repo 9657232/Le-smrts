@@ -65,6 +65,11 @@ void keyReleased() {
   } else if (key == 'o'||key == 'O') {
     fr = fr-5;
   }
+  if (key == 'w'||key == 'W'||keyCode == UP) {
+    p1.ch=p1.ch-1;
+  } else if (key == 'S'||key=='s'||keyCode==DOWN) {
+    p1.ch=p1.ch+1;
+  }
 }
 
 void draw() {
