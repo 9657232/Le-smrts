@@ -16,10 +16,44 @@ void setup() {
   ingredients = new ArrayList<Ingredient>();
   floors = new ArrayList<Floor>();
   enemies = new ArrayList<Enemy>();
-  ladders.add(new Ladder(0, 4, 2));
+  ladders.add(new Ladder(0, 4, 5));
+  ladders.add(new Ladder(1, 6, 5));
+  ladders.add(new Ladder(0, 11, 2));
+  ladders.add(new Ladder(2, 4, 9));
+  ladders.add(new Ladder(3, 10, 3));
+  ladders.add(new Ladder(4, 4, 9));
+  ladders.add(new Ladder(5, 8, 3));
+  ladders.add(new Ladder(6, 4, 9));
+  ladders.add(new Ladder(7, 4, 5));
+  ladders.add(new Ladder(8, 4, 3));
+  ladders.add(new Ladder(8, 9, 4));
   ingredients.add(new Ingredient(1, 3, 4));
+  ingredients.add(new Ingredient(2, 3, 4));
+  ingredients.add(new Ingredient(3, 3, 4));
+  ingredients.add(new Ingredient(1, 5, 2));
+  ingredients.add(new Ingredient(2, 5, 2));
+  ingredients.add(new Ingredient(4, 6, 4));
+  ingredients.add(new Ingredient(2, 7, 3));
+  ingredients.add(new Ingredient(3, 7, 2));
+  ingredients.add(new Ingredient(1, 8, 3));
+  ingredients.add(new Ingredient(4, 8, 2));
+  ingredients.add(new Ingredient(1, 10, 1));
+  ingredients.add(new Ingredient(3, 10, 3));
+  ingredients.add(new Ingredient(4, 10, 3));
+  ingredients.add(new Ingredient(2, 12, 1));
+  ingredients.add(new Ingredient(3, 12, 1));
+  ingredients.add(new Ingredient(4, 12, 1));
   floors.add(new Floor(0, 3, 4));
-  floors.add(new Floor(0, 5, 4));
+  floors.add(new Floor(0, 5, 3));
+  floors.add(new Floor(3, 6, 1));
+  floors.add(new Floor(0, 3, 4));
+  floors.add(new Floor(1, 7, 2));
+  floors.add(new Floor(0, 8, 1));
+  floors.add(new Floor(3, 8, 1));
+  floors.add(new Floor(1, 9, 1));
+  floors.add(new Floor(0, 10, 1));
+  floors.add(new Floor(2, 10, 2));
+  floors.add(new Floor(0, 12, 4));
   enemies.add(new Enemy(100, 50, 16, 16, 1, 1));
   p1 = new Info();
   size(336, 315);
@@ -34,11 +68,11 @@ void keyReleased() {
 }
 
 void draw() {
-  if(fr<30){
-  fr = 30;
+  if (fr<30) {
+    fr = 30;
   }
-  if(fr>200) {
-  fr = 200;
+  if (fr>200) {
+    fr = 200;
   }
   frameRate(fr);
   if (p1.start == true) {
