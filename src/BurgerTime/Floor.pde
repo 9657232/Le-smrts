@@ -15,17 +15,25 @@ class Floor {
     y=(height)-(yType*16);
   }
   void collide() {
-    if (keyPressed == true&&c1.y<=y-6&&c1.y>=y-10&&c1.x>=x+8&&c1.x<=(w+x)+8&&key=='d'||key == 'D'||keyCode == RIGHT) {
-      c1.animation = c1.animation+1;
-      c1.xspeed = 1;
-      c1.still = false;
-      c1.y = y-8;
+    if (keyPressed == true) {
+      if (key=='d'||key == 'D'||keyCode == RIGHT) {
+        if (keyPressed == true&&c1.y<=y-6&&c1.y>=y-10&&c1.x>=x+8&&c1.x<=(w+x)+8) {
+          c1.animation = c1.animation+1;
+          c1.xspeed = 1;
+          c1.still = false;
+          c1.y = y-8;
+        }
+      }
     }
-    if (keyPressed == true&&c1.y<=y-6&&c1.y>=y-10&&c1.x>=x+8&&c1.x<=(w+x)+8&&key=='a'||key == 'A'||keyCode == LEFT) {
-      c1.anim2 = c1.anim2+1;
-      c1.xspeed = -1;
-      c1.still = false;
-      c1.y = y-8;
+    if (keyPressed == true) {
+      if (key=='a'||key == 'A'||keyCode == LEFT) {
+        if (c1.y<=y-6&&c1.y>=y-10&&c1.x>=x+8&&c1.x<=(w+x)) {
+          c1.anim2 = c1.anim2+1;
+          c1.xspeed = -1;
+          c1.still = false;
+          c1.y = y-8;
+        }
+      }
     }
     if (c1.x<=x+8&& c1.xspeed == -1) {
       c1.x = x+8;
@@ -47,17 +55,17 @@ class Floor {
     if (wtype >=0) {
       rect(x, y, 16, h);
     }
-    if(wtype >=1) {
-    rect(x+64,y,16,h);
+    if (wtype >=1) {
+      rect(x+64, y, 16, h);
     }
-    if(wtype >=2) {
-    rect(x+64*2,y,16,h);
+    if (wtype >=2) {
+      rect(x+64*2, y, 16, h);
     }
-    if(wtype >=3) {
-    rect(x+64*3,y,16,h);
+    if (wtype >=3) {
+      rect(x+64*3, y, 16, h);
     }
-    if(wtype >=4) {
-    rect(x+64*4,y,16,h);
+    if (wtype >=4) {
+      rect(x+64*4, y, 16, h);
     }
   }
 }
