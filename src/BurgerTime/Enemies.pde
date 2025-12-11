@@ -1,47 +1,71 @@
-class Enemy {
-  // Member Variables
-  int x, y, w, h, xspeed, yspeed, speed, type;
-  PImage enem1;
+class Floor {
+  int x, y, w, h, yType, wtype, xtype, co2;
+  color co1;
+  boolean onLadder, offLadder;
 
-  // Constructor
-  Enemy(int x, int y, int w, int h, int type, int speed) {
-    this.x = x;
-    this.y = y;
-    this.w = w;
-    this.h = h;
-    this.speed = speed;
-    this.type = type;
-    if(type == '1') {
-    enem1 = loadImage("");
-    } else if(type == '2') {
-    enem1 = loadImage("");
-    } else if(type == '3') {
-    enem1 = loadImage("");
-    } else if(type == '4') {
-    enem1 = loadImage("");
+  Floor(int xtype, int yType, int wtype) {
+    this.xtype = xtype;
+    this.yType = yType;
+    this.wtype = wtype;
+    w = (wtype*64)+16;
+    x = (xtype*64)+32;
+    h = 2;
+    co1 = #0041FF;
+    co2 = #3BEAFF;
+    y=(height)-(yType*16);
+  }
+  void collide() {
+    if (keyPressed == true) {
+      if (key=='d'||key == 'D'||keyCode == RIGHT) {
+        if (keyPressed == true&&c1.y<=y-6&&c1.y>=y-10&&c1.x>=x+8&&c1.x<=(w+x)+8) {
+          c1.animation = c1.animation+1;
+          c1.xspeed = 1;
+          c1.still = false;
+          c1.y = y-8;
+        }
+      }
+    }
+    if (keyPressed == true) {
+      if (key=='a'||key == 'A'||keyCode == LEFT) {
+        if (c1.y<=y-6&&c1.y>=y-10&&c1.x>=x+8&&c1.x<=(w+x)) {
+          c1.anim2 = c1.anim2+1;
+          c1.xspeed = -1;
+          c1.still = false;
+          c1.y = y-8;
+        }
+      }
+    }
+    if (c1.x<=x+8&& c1.xspeed == -1) {
+      c1.x = x+8;
+      image(c1.p, c1.x, c1.y);
+      c1.still = false;
+      c1.anim2 = 0;
+    } else if (c1.x>=w+x-8&&c1.xspeed ==1&&c1.y<=y&&c1.y>=y-12) {
+      image(c1.p, c1.x, c1.y);
+      c1.animation = 0;
+      c1.still = false;
+      c1.x = w+x-8;
     }
   }
-
-  // Member Methods
-
   void display() {
-    noStroke();
-    fill(255, 0, 0);
-    //image(enem1,x,y);
-    rectMode(CENTER);
+    rectMode(CORNER);
+    fill(co1);
     rect(x, y, w, h);
-  }
-  void find() {
-    if (x<c1.x) {
-      xspeed = speed;
-    } else if (x>c1.x) {
-      xspeed = -speed;
-    } else if (c1.x == x) {
-      xspeed = 0;
+    fill(co2);
+    if (wtype >=0) {
+      rect(x, y, 16, h);
     }
-  }
-  void move() {
-    x = x+xspeed;
-    y = y+yspeed;
+    if (wtype >=1) {
+      rect(x+64, y, 16, h);
+    }
+    if (wtype >=2) {
+      rect(x+64*2, y, 16, h);
+    }
+    if (wtype >=3) {
+      rect(x+64*3, y, 16, h);
+    }
+    if (wtype >=4) {
+      rect(x+64*4, y, 16, h);
+    }
   }
 }
