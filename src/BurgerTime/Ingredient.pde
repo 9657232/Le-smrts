@@ -10,35 +10,11 @@ class Ingredient {
     this.xtype = xtype;
     this.yType = yType;
     this.type = type;
-    if (yType == 1) {
-      y = 200;
-    } else if (yType == 2) {
-      y = 184;
-    } else if (yType == 3) {
-      y = 168;
-    } else if (yType == 4) {
-      y = 152;
-    } else if (yType == 5) {
-      y = 136;
-    } else if (yType == 6) {
-      y = 120;
-    } else if (yType == 7) {
-      y = 104;
-    } else if (yType == 8) {
-      y = 88;
-    } else if (yType == 9) {
-      y = 72;
-    } else if (yType == 10) {
-      y = 56;
-    } else if (yType == 11) {
-      y = 40;
-    } else if (yType == 12) {
-      y = 24;
-    }
-    x = 52;
-    x1 = 104;
-    x2 = 156;
-    x3 = 208;
+    y=(height)-(yType*16);
+    x = 72;
+    x1 = 72+64;
+    x2 = 72+(64*2);
+    x3 = 72+(64*3);
     m = y;
     m1 = y;
     m2 = y;
