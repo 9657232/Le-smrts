@@ -38,12 +38,12 @@ class Ingredient {
       i1 = loadImage("burgertop2.png");
       i2 = loadImage("burgertop3.png");
       i3 = loadImage("burgertop4.png");
-    } else if (type == 2) {
+    } else if (type == 3) {
       i = loadImage("beef1.png");
       i1 = loadImage("beef2.png");
       i2 = loadImage("beef3.png");
       i3 = loadImage("beef4.png");
-    } else if (type == 3) {
+    } else if (type == 2) {
       i = loadImage("letus1.png");
       i1 = loadImage("letus2.png");
       i2 = loadImage("letus3.png");
@@ -103,7 +103,7 @@ class Ingredient {
     m3 = m3-3;
     timer = -1;
     }
-    if (falling == true) {
-    }
+    //if (falling == true&&y<f1.y&&y>f1.y-5) {
+    //}
   }
 }
