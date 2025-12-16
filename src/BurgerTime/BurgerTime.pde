@@ -1,7 +1,7 @@
 //ArrayList<Enemy> enemies;
 //ArrayList<Floor> floors;
-int fr, ia = 16, ea=1, la=11, fa=10, level = 1, world=1, counter, dTimer, lives;
-boolean dying;
+int fr, ia = 16, ea=1, la=11, fa=10, level = 1, world=1, counter, dTimer, lives, score;
+boolean dying, endlooper;
 PImage p;
 Floor[] floors = new Floor[fa];
 Enemy[] enemies = new Enemy[ea];
@@ -15,6 +15,7 @@ Info p1;
 Floor f1;
 
 void setup() {
+  lives = 5;
   p = loadImage("PeterPepper.png");
   c1 = new Chef();
   //ladders = new ArrayList<Ladder>();
@@ -87,12 +88,7 @@ void keyReleased() {
 }
 
 void draw() {
-  if (dTimer>=300) {
-    dTimer = 0;
-    c1.bigdead = false;
-    dying = false; 
-  }
-
+score = counter*50;
   if (counter>=16) {
     level++;
     counter=0;
@@ -154,9 +150,20 @@ void draw() {
     fill(0);
     rect(0, 0, width, height);
     textSize(25);
+    fill(255);
     textAlign(LEFT);
     image(p, c1.x, c1.y);
-    text("x"+lives, c1.x+25, c1.y);
+    text("x "+lives, c1.x+25, c1.y+12);
+  }
+    if (dTimer>=300) {
+    dTimer = 0;
+    c1.bigdead = false;
+    dying = false; 
+    endlooper = false;
+  }
+  if(endlooper == false&&dying == true) {
+    lives--;
+    endlooper = true;
   }
 }
 void keyTyped() {
