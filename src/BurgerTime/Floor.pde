@@ -19,7 +19,7 @@ class Floor {
       if (key=='d'||key == 'D'||keyCode == RIGHT) {
         if (keyPressed == true&&c1.y<=y-6&&c1.y>=y-10&&c1.x>=x+8&&c1.x<=(w+x)+8) {
           c1.animation = c1.animation+1;
-          c1.xspeed = 1;
+          c1.xspeed = c1.speed;
           c1.still = false;
           c1.y = y-8;
         }
@@ -29,18 +29,18 @@ class Floor {
       if (key=='a'||key == 'A'||keyCode == LEFT) {
         if (c1.y<=y-6&&c1.y>=y-10&&c1.x>=x+8&&c1.x<=(w+x)) {
           c1.anim2 = c1.anim2+1;
-          c1.xspeed = -1;
+          c1.xspeed = -c1.speed;
           c1.still = false;
           c1.y = y-8;
         }
       }
     }
-    if (c1.x<=x+8&& c1.xspeed == -1&&c1.y<=y&&c1.y>=y-12) {
+    if (c1.x<=x+8&&c1.x>=x&& c1.xspeed == -1&&c1.y<=y&&c1.y>=y-12) {
       c1.x = x+8;
       image(c1.p, c1.x, c1.y);
       c1.still = false;
       c1.anim2 = 0;
-    } else if (c1.x>=w+x-8&&c1.xspeed ==1&&c1.y<=y&&c1.y>=y-12) {
+    } else if (c1.x>=w+x-8&&c1.x<w+x&&c1.xspeed ==1&&c1.y<=y&&c1.y>=y-12) {
       image(c1.p, c1.x, c1.y);
       c1.animation = 0;
       c1.still = false;
