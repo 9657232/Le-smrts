@@ -1,12 +1,13 @@
 class Ingredient {
   // Member Variables
-  int x, x1, x2, x3, y, w, h, speed, xtype, type,yType, xx, m, m1, m2, m3, timer;
-  boolean f, f2, f3, f4, falling;
+  int x, x1, x2, x3, y, w, h, speed, xtype, type, yType, xx, m, m1, m2, m3, timer, z, fall, low, felled;
+  boolean f, f2, f3, f4, falling, fell, enemontop;
   PImage i, i1, i2, i3;
+  float speedtimer;
 
   // Constructor
-  Ingredient(int xtype, int yType, int type) {
-
+  Ingredient(int xtype, int yType, int type, int low) {
+    this.low = low;
     this.xtype = xtype;
     this.yType = yType;
     this.type = type;
@@ -72,38 +73,99 @@ class Ingredient {
   }
 
   void move() {
+    y=y+speed;
+    if (falling == true) {
+      m = y-3;
+      m3 = y-3;
+      m1 = y;
+      m2 = y;
+    }
     if (c1.x>=xx-26&&c1.x<=xx-10&&c1.y<=y&&c1.y>=y-20&&f == false) {
       m = y+3;
       f = true;
+    } else {
     }
     if (c1.x>=xx-14&&c1.x<=xx+2&&c1.y<=y&&c1.y>=y-20&&f2 == false) {
       m1 = y+3;
       f2 = true;
+    } else {
     }
     if (c1.x>=xx-2&&c1.x<=xx+14&&c1.y<=y&&c1.y>=y-20&&f3 == false) {
       m2 = y+3;
       f3 = true;
+    } else {
     }
     if (c1.x>=xx+10&&c1.x<=xx+26&&c1.y<=y&&c1.y>=y-20&&f4 == false) {
-      f4 = true;
       m3 = y+3;
+      f4 = true;
+    } else {
     }
     if (f == true&&f2 == true&&f3 == true&&f4 == true) {
-      m = m+1;
-      m1 = m1+1;
-      m2 = m2+1;
-      m3 = m3+1;
       falling = true;
+    } else {
+      falling = false;
     }
-     if (f == true&&f2 == true&&f3 == true&&f4 == true&&timer>-1) {
-     timer = 1;
-     }
-    if (timer==1) {
-    m = m-3;
-    m3 = m3-3;
-    timer = -1;
+    if (falling == true) {
+      speedtimer = speedtimer+.1;
+      if (speedtimer >=.2) {
+        speed = 2;
+        speedtimer=0;
+      } else {
+        speed = 0;
+      }
     }
-    //if (falling == true&&y<f1.y&&y>f1.y-5) {
-    //}
+    for (z = 0; z<ingredients.length; z++) {
+      if (falling == true&&ingredients[z].y<y+4&&ingredients[z].y>y&&xx>=ingredients[z].xx-2&&xx<=ingredients[z].xx+2) {
+        y = ingredients[z].y;
+        f = false;
+        f2 = false;
+        f3 = false;
+        f4 = false;
+        falling = false;
+        fell = true;
+        speed = 0;
+        m = y;
+        m1 = y;
+        m2 = y;
+        m3 = y;
+        if (fell == true) {
+          ingredients[z].f = true;
+          ingredients[z].f2 = true;
+          ingredients[z].f3 = true;
+          ingredients[z].f4 =  true;
+          ingredients[z].falling = true;
+          fell = false;
+        }
+      }
+      if (falling == true&&y>(height)-(low*16)) {
+        if (y+10>=ingredients[z].y&&y+6<=ingredients[z].y&&xx == ingredients[z].xx) {
+          y = ingredients[z].y-10;
+          falling = false;
+          f = false;
+          f2 = false;
+          f3 = false;
+          f4 = false;
+          speed = 0;
+          m = y;
+          m1 = y;
+          m2 = y;
+          m3 = y;
+          counter++;
+        } else if (y>height-30) {
+          counter++;
+          y = height-30;
+          falling = false;
+          f = false;
+          f2 = false;
+          f3 = false;
+          f4 = false;
+          speed = 0;
+          m = y;
+          m1 = y;
+          m2 = y;
+          m3 = y;
+        }
+      }
+    }
   }
 }
