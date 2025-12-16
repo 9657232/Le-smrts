@@ -1,6 +1,7 @@
 class Ladder {
-  int x, y, c, a, xtype, yType;
+  int x, y, c, a, xtype, yType, z;
   PImage lad, p;
+  boolean onladder;
   // Constructor
   Ladder(int xtype, int yType, int c) {
     this.xtype = xtype;
@@ -12,11 +13,17 @@ class Ladder {
     x = (xtype*32)+40;
   }
   void display() {
+    if (c1.y<=y-(c*16) && c1.yspeed==-1 && c1.x<=x+8 && c1.x>=x-8) {
+      c1.yspeed = 0;
+    }
+    if (c1.y>=y-1 && c1.yspeed==1 && c1.x<=x+8 && c1.x>=x-8&&c1.y<=y+8) {
+      c1.yspeed = 0;
+    }
     if (c1.x<=x+8 && c1.x>=x-8&&c1.y>y-(c*16)&&c1.y<y+8) {
       if (key == 'w' || key == 'W' || keyCode == UP) {
         c1.still = false;
         c1.ladv = c1.ladv+.1;
-        c1.yspeed = -1;
+        c1.yspeed = -c1.speed;
         c1.x = x;
         if (c1.ladv>=.0&&c1.ladv<=.5) {
           //image(c1.pu2, c1.x, c1.y);
@@ -28,11 +35,8 @@ class Ladder {
       if (key == 's' || key == 'S' || keyCode == DOWN) {
         c1.still = false;
         c1.ladt = c1.ladt+.1;
-        c1.yspeed = 1;
+        c1.yspeed = c1.speed;
         c1.x = x;
-        if (c1.ladt>.0 && c1.ladt<.5) {
-          //image(c1.pd1, c1.x, c1.y);
-        }
       } else {
       }
     }
@@ -103,13 +107,6 @@ class Ladder {
       image(lad, x, y-112);
       image(lad, x, y-128);
       image(lad, x, y-144);
-    }
-    if (c1.y<=y-(c*16) && c1.yspeed==-1 && c1.x<=x+8 && c1.x>=x-8) {
-      c1.yspeed = 0;
-    }
-
-    if (c1.y>=y-1 && c1.yspeed==1 && c1.x<=x+8 && c1.x>=x-8) {
-      c1.yspeed = 0;
     }
   }
 }
