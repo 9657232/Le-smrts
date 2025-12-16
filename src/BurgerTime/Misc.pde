@@ -34,8 +34,8 @@ class Info {
     text("1UP", x, y);
     text("HI-SCORE", x2, y);
     fill(255);
-    text(up, x, y2);
-    text(hi, x2, y2);
+    text(lives, x, y2);
+    text(score, x2, y2);
     fill(0, 255, 0);
     textAlign(RIGHT);
     textSize(12);
