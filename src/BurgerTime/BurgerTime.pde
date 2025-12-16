@@ -16,6 +16,7 @@ Floor f1;
 
 void setup() {
   lives = 5;
+  level = 3; // testing purposes
   p = loadImage("PeterPepper.png");
   c1 = new Chef();
   //ladders = new ArrayList<Ladder>();
@@ -65,8 +66,17 @@ void setup() {
     la = 1; // how many ladders are in level 2
     fa = 1; // how many floors are in level 2
   } else if (level == 3) {
+    ia = 1; // how many ingredients are in level 2 usually 16 but make it exact for testing purposes
+    la = 1; // how many ladders are in level 2
+    fa = 1; // how many floors are in level 2
   } else if (level == 4) {
+    ia = 1; // how many ingredients are in level 2 usually 16 but make it exact for testing purposes
+    la = 1; // how many ladders are in level 2
+    fa = 1; // how many floors are in level 2
   } else if (level == 5) {
+    ia = 1; // how many ingredients are in level 2 usually 16 but make it exact for testing purposes
+    la = 1; // how many ladders are in level 2
+    fa = 1; // how many floors are in level 2
   }
   enemies[0] = new Enemy(0, (height-8)-(15*16), 16, 16, 1, 1);
   p1 = new Info();
