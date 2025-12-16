@@ -60,8 +60,16 @@ void setup() {
     floors[7] = new Floor(0, 13, 1);
     floors[8] = new Floor(2, 13, 2);
     floors[9] = new Floor(0, 15, 4);
-    enemies[0] = new Enemy(0, (height-8)-(15*16), 16, 16, 1, 1);
+  } else if (level == 2) {
+    
+  } else if (level == 3) {
+    
+  } else if (level == 4) {
+    
+  } else if (level == 5) {
+    
   }
+  enemies[0] = new Enemy(0, (height-8)-(15*16), 16, 16, 1, 1);
   p1 = new Info();
   size(336, 315);
   fr = 60;
@@ -88,7 +96,7 @@ void keyReleased() {
 }
 
 void draw() {
-score = counter*50;
+  score = counter*50;
   if (counter>=16) {
     level++;
     counter=0;
@@ -155,13 +163,13 @@ score = counter*50;
     image(p, c1.x, c1.y);
     text("x "+lives, c1.x+25, c1.y+12);
   }
-    if (dTimer>=300) {
+  if (dTimer>=300) {
     dTimer = 0;
     c1.bigdead = false;
-    dying = false; 
+    dying = false;
     endlooper = false;
   }
-  if(endlooper == false&&dying == true) {
+  if (endlooper == false&&dying == true) {
     lives--;
     endlooper = true;
   }
