@@ -1,5 +1,7 @@
 class Enemy {
+  // path finding influenced heavily
   boolean onFloor() {
+    int z;
     for (Floor f : floors) {
       if (y <= f.y && y >= f.y - 12 &&
         x >= f.x && x <= f.x + f.w) {
@@ -80,6 +82,15 @@ class Enemy {
   void move() {
     x += xspeed;
     y += yspeed;
+    for (z = 0; z<ingredients.length; z++) {
+      if (x>=ingredients[z].xx-18&&x<=ingredients[z].xx+18&&ingredients[z].f == true&&ingredients[z].f2 == true&&ingredients[z].f3 == true&&ingredients[z].f4 == true&&y>=ingredients[z].y-12&&y<=ingredients[z].y+4) {
+        ingredients[z].f = true;
+        ingredients[z].f2 = true;
+        ingredients[z].f3 = true;
+        ingredients[z].f4 = true;
+        xspeed = 0;
+      }
+    }
   }
   void killEmAll() {
     if (c1.y<=y+8&&c1.y>=y-8&&c1.x>=x-8&&c1.x<=x+8) {
