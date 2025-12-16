@@ -1,8 +1,12 @@
-ArrayList<Ladder> ladders;
-ArrayList<Ingredient> ingredients;
-ArrayList<Enemy> enemies;
-ArrayList<Floor> floors;
-int fr;
+//ArrayList<Enemy> enemies;
+//ArrayList<Floor> floors;
+int fr, ia = 16, ea=1, la=11, fa=10, level = 1, world=1, counter, dTimer, lives;
+boolean dying;
+PImage p;
+Floor[] floors = new Floor[fa];
+Enemy[] enemies = new Enemy[ea];
+Ingredient[] ingredients = new Ingredient[ia];
+Ladder[] ladders = new Ladder[la];
 Ingredient i1;
 Chef c1;
 Enemy e1;
@@ -11,68 +15,95 @@ Info p1;
 Floor f1;
 
 void setup() {
+  p = loadImage("PeterPepper.png");
   c1 = new Chef();
-  ladders = new ArrayList<Ladder>();
-  ingredients = new ArrayList<Ingredient>();
-  floors = new ArrayList<Floor>();
-  enemies = new ArrayList<Enemy>();
-  ladders.add(new Ladder(0, 4, 5));
-  ladders.add(new Ladder(1, 6, 5));
-  ladders.add(new Ladder(0, 11, 2));
-  ladders.add(new Ladder(2, 4, 9));
-  ladders.add(new Ladder(3, 10, 3));
-  ladders.add(new Ladder(4, 4, 9));
-  ladders.add(new Ladder(5, 8, 3));
-  ladders.add(new Ladder(6, 4, 9));
-  ladders.add(new Ladder(7, 4, 5));
-  ladders.add(new Ladder(8, 4, 3));
-  ladders.add(new Ladder(8, 9, 4));
-  ingredients.add(new Ingredient(1, 3, 4));
-  ingredients.add(new Ingredient(2, 3, 4));
-  ingredients.add(new Ingredient(3, 3, 4));
-  ingredients.add(new Ingredient(1, 5, 2));
-  ingredients.add(new Ingredient(2, 5, 2));
-  ingredients.add(new Ingredient(4, 6, 4));
-  ingredients.add(new Ingredient(2, 7, 3));
-  ingredients.add(new Ingredient(3, 7, 2));
-  ingredients.add(new Ingredient(1, 8, 3));
-  ingredients.add(new Ingredient(4, 8, 2));
-  ingredients.add(new Ingredient(1, 10, 1));
-  ingredients.add(new Ingredient(3, 10, 3));
-  ingredients.add(new Ingredient(4, 10, 3));
-  ingredients.add(new Ingredient(2, 12, 1));
-  ingredients.add(new Ingredient(3, 12, 1));
-  ingredients.add(new Ingredient(4, 12, 1));
-  floors.add(new Floor(0, 3, 4));
-  floors.add(new Floor(0, 5, 3));
-  floors.add(new Floor(3, 6, 1));
-  floors.add(new Floor(0, 3, 4));
-  floors.add(new Floor(1, 7, 2));
-  floors.add(new Floor(0, 8, 1));
-  floors.add(new Floor(3, 8, 1));
-  floors.add(new Floor(1, 9, 1));
-  floors.add(new Floor(0, 10, 1));
-  floors.add(new Floor(2, 10, 2));
-  floors.add(new Floor(0, 12, 4));
-  enemies.add(new Enemy(100, 50, 16, 16, 1, 1));
+  //ladders = new ArrayList<Ladder>();
+  //ingredients = new ArrayList<Ingredient>();
+  //floors = new ArrayList<Floor>();
+  //enemies = new ArrayList<Enemy>();
+  if (level == 1) {
+    ladders[0] = new Ladder(0, 7, 5);
+    ladders[1] = new Ladder(1, 9, 5);
+    ladders[2] = new Ladder(0, 14, 2);
+    ladders[3] = new Ladder(2, 7, 9);
+    ladders[4] = new Ladder(3, 13, 3);
+    ladders[5] = new Ladder(4, 7, 9);
+    ladders[6] = new Ladder(5, 11, 3);
+    ladders[7] = new Ladder(6, 7, 9);
+    ladders[8] = new Ladder(7, 7, 5);
+    ladders[9] = new Ladder(8, 7, 3);
+    ladders[10] = new Ladder(8, 12, 4);
+    ingredients[0] = new Ingredient(1, 6, 4, 6);
+    ingredients[1] = new Ingredient(1, 8, 3, 6);
+    ingredients[2] = new Ingredient(1, 11, 2, 6);
+    ingredients[3] = new Ingredient(1, 13, 1, 6);
+    ingredients[4] = new Ingredient(2, 6, 4, 6);
+    ingredients[5] = new Ingredient(2, 8, 3, 6);
+    ingredients[6] = new Ingredient(2, 10, 2, 6);
+    ingredients[7] = new Ingredient(2, 15, 1, 6);
+    ingredients[8] = new Ingredient(3, 6, 4, 6);
+    ingredients[9] = new Ingredient(3, 10, 3, 6);
+    ingredients[10] = new Ingredient(3, 13, 2, 6);
+    ingredients[11] = new Ingredient(3, 15, 1, 6);
+    ingredients[12] = new Ingredient(4, 9, 4, 6);
+    ingredients[15] = new Ingredient(4, 11, 3, 6);
+    ingredients[14] = new Ingredient(4, 13, 2, 6);
+    ingredients[13] = new Ingredient(4, 15, 1, 6);
+    floors[0] = new Floor(0, 6, 4);
+    floors[1] = new Floor(0, 8, 3);
+    floors[2] = new Floor(3, 9, 1);
+    floors[3] = new Floor(1, 10, 2);
+    floors[4] = new Floor(0, 11, 1);
+    floors[5] = new Floor(3, 11, 1);
+    floors[6] = new Floor(1, 12, 1);
+    floors[7] = new Floor(0, 13, 1);
+    floors[8] = new Floor(2, 13, 2);
+    floors[9] = new Floor(0, 15, 4);
+    enemies[0] = new Enemy(0, (height-8)-(15*16), 16, 16, 1, 1);
+  }
   p1 = new Info();
   size(336, 315);
   fr = 60;
 }
 void keyReleased() {
-  if (key == 'p'||key == 'P') {
-    fr = fr+5;
-  } else if (key == 'o'||key == 'O') {
-    fr = fr-5;
+  if (p1.password == true&&p1.start == true&&key != BACKSPACE&&key != 10&&key != 16&&key!= 18&&key!= 17&&key!= 9&&key!= ' ') {
+    p1.cube++;
+    p1.enterpass = 0;
   }
-  if (key == 'w'||key == 'W'||keyCode == UP) {
-    p1.ch=p1.ch-1;
-  } else if (key == 'S'||key=='s'||keyCode==DOWN) {
-    p1.ch=p1.ch+1;
+  if (p1.start == true&&p1.G4M3D3V == true) {
+    if (key == 'p'||key == 'P') {
+      fr = fr+5;
+    } else if (key == 'o'||key == 'O') {
+      fr = fr-5;
+    }
+  }
+  if (p1.password == false) {
+    if (key == 'w'||key == 'W'||keyCode == UP) {
+      p1.ch=p1.ch-1;
+    } else if (key == 'S'||key=='s'||keyCode==DOWN) {
+      p1.ch=p1.ch+1;
+    }
   }
 }
 
 void draw() {
+  if (dTimer>=300) {
+    dTimer = 0;
+    c1.bigdead = false;
+    dying = false; 
+  }
+
+  if (counter>=16) {
+    level++;
+    counter=0;
+  }
+  println(dTimer);
+  //println(world+"-"+level);
+  if (level>=6) {
+    level = 1;
+    world++;
+    counter=0;
+  }
   if (fr<30) {
     fr = 30;
   }
@@ -80,7 +111,7 @@ void draw() {
     fr = 200;
   }
   frameRate(fr);
-  if (p1.start == true) {
+  if (p1.start == true&&p1.password == false&&dying == false) {
     c1.still = true;
     background(0);
     for (Ladder l : ladders) {
@@ -91,19 +122,43 @@ void draw() {
     }
     for (Ingredient i : ingredients) {
       i.display();
-      i.move();
+      if (dying == false) {
+        i.move();
+      }
     }
     for (Enemy e : enemies) {
-      e.display();
-      e.move();
-      e.find();
+      if (dying == false) {
+        e.find();
+        e.move();
+        e.killEmAll();
+        e.display();
+      }
     }
+
     for (Floor f : floors) {
       f.collide();
     }
     c1.display();
     p1.display();
-    c1.move();
+    if (dying == false) {
+      c1.move();
+    }
   }
   p1.screen();
+  if (c1.bigdead == true) {
+    dTimer++;
+    dying = true;
+  }
+  if (dTimer>=120) {
+    rectMode(CORNER);
+    fill(0);
+    rect(0, 0, width, height);
+    textSize(25);
+    textAlign(LEFT);
+    image(p, c1.x, c1.y);
+    text("x"+lives, c1.x+25, c1.y);
+  }
+}
+void keyTyped() {
+  p1.keyTyped();
 }
