@@ -61,13 +61,12 @@ void setup() {
     floors[8] = new Floor(2, 13, 2);
     floors[9] = new Floor(0, 15, 4);
   } else if (level == 2) {
-    
+    ia = 1; // how many ingredients are in level 2 usually 16 but make it exact for testing purposes
+    la = 1; // how many ladders are in level 2
+    fa = 1; // how many floors are in level 2
   } else if (level == 3) {
-    
   } else if (level == 4) {
-    
   } else if (level == 5) {
-    
   }
   enemies[0] = new Enemy(0, (height-8)-(15*16), 16, 16, 1, 1);
   p1 = new Info();
