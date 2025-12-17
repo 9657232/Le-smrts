@@ -14,6 +14,7 @@ What I have
 
 ![BurgerTimeClone]()
 
-Its a game where you have to avoid enemies and make burgers
+Game where you have to avoid enemies and make the Ingredientds fall down and make burgers
+you will also have pepper which will stun enemies and
 
 11/11/2025
