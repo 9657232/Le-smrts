@@ -12,7 +12,7 @@ What I am trying to make it look like
 
 What I have
 
-![BurgerTimeClone]()
+![BurgerTimeClone](https://github.com/9657232/Le-smrts/blob/main/Images/BurgerTimeScreenshot.png?raw=true)
 
 Game where you have to avoid enemies and make the Ingredientds fall down and make burgers
 you will also have pepper which will stun enemies and
