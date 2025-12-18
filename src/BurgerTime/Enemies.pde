@@ -1,7 +1,6 @@
 class Enemy {
   // path finding influenced heavily
   boolean onFloor() {
-    int z;
     for (Floor f : floors) {
       if (y <= f.y && y >= f.y - 12 &&
         x >= f.x && x <= f.x + f.w) {
@@ -14,7 +13,7 @@ class Enemy {
 
   Ladder getNearbyLadder() {
     for (Ladder l : ladders) {
-      if (abs(x - l.x) <= 8 &&
+      if (abs(x - l.x) <= 1 &&
         y <= l.y && y >= l.y - (l.c * 16)) {
         return l;
       }
@@ -22,13 +21,16 @@ class Enemy {
     return null;
   }
 
-  int x, y, w, h, xspeed, yspeed, speed, type, z, idk;
+  int x, y, w, h, xspeed, yspeed, speed, type, z, idk, OgX, OgY, stunTime;
   PImage enem1;
+  boolean stunned;
 
   // Constructor
   Enemy(int x, int y, int w, int h, int type, int speed) {
     this.x = x;
+    OgX = x;
     this.y = y;
+    OgY = y;
     this.w = w;
     this.h = h;
     this.speed = speed;
@@ -80,21 +82,29 @@ class Enemy {
 
 
   void move() {
-    x += xspeed;
-    y += yspeed;
-    for (z = 0; z<ingredients.length; z++) {
-      if (x>=ingredients[z].xx-18&&x<=ingredients[z].xx+18&&ingredients[z].f == true&&ingredients[z].f2 == true&&ingredients[z].f3 == true&&ingredients[z].f4 == true&&y>=ingredients[z].y-12&&y<=ingredients[z].y+4) {
-        ingredients[z].f = true;
-        ingredients[z].f2 = true;
-        ingredients[z].f3 = true;
-        ingredients[z].f4 = true;
-        xspeed = 0;
-      }
+    if (x<=c1.pepperX+8&&x>=c1.pepperX-8&&y>=c1.pepperY-8&&y<=c1.pepperY+8) {
+      stunned = true;
+      stunTime++;
+    }
+    if (stunTime>=120) {
+      stunned = false;
+    }
+    if (stunned == false) {
+      x += xspeed;
+      y += yspeed;
     }
   }
   void killEmAll() {
-    if (c1.y<=y+8&&c1.y>=y-8&&c1.x>=x-8&&c1.x<=x+8) {
-      c1.bigdead = true;
+    if (stunned == false) {
+      if (c1.y==y&&c1.x>=x-8&&c1.x<=x+8&&p1.IM0RT4L == false) {
+        c1.bigdead = true;
+      }
+    }
+  }
+  void killed() {
+    if (c1.bigdead == true) {
+      x = OgX;
+      y = OgY;
     }
   }
 }
