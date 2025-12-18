@@ -20,4 +20,5 @@ you will also have pepper which will stun enemies
 Started: 11/11/2025
 
 Finished: December 17th 2025
-![Source Code](https://github.com/9657232/Le-smrts/tree/main/src/BurgerTime)
+
+*[Source Code](https://github.com/9657232/Le-smrts/tree/main/src/BurgerTime)
