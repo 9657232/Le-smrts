@@ -1,10 +1,10 @@
 class Info {
   // Member Variables
-  int x, y, x2, x3, y2, up, hi, pep, transition, ch = 1, enterpass, cube, value, ccube, a, merp, cooldown, spacing=45, idkatthispoint=width/2;
+  int x, y, x2, x3, y2, up, hi, transition, ch = 1, enterpass, cube, value, ccube, a, merp, cooldown, spacing=45, idkatthispoint=width/2;
   PImage s, c;
-  boolean start, start2, password, uselesspt2, typing, G4M3D3V;
+  boolean start, start2, password, uselesspt2, typing, G4M3D3V, IM0RT4L;
   // the typing in the password is influenced heavily
-  String passing = "", fRatecontroll = "G4M3D3V", speed = "NRW000M";
+  String passing = "", fRatecontroll = "G4M3D3V", speed = "NRW000M", god = "IM0RT4L", joat = "1DNTKN0";
 
   // Constructor
   Info() {
@@ -15,13 +15,13 @@ class Info {
     y2 = 27;
     up = 0;
     hi = 28000;
-    pep = 5;
     start = false;
     c = loadImage("2ndPlaceHolder.png");
     ch = 1;
     enterpass =1;
     value = 255;
     a = 100;
+    s = loadImage("Placeholder.png");
   }
 
   // Member Methods
@@ -53,15 +53,21 @@ class Info {
       }
       text(fr, 175, y2);
     }
-    if(c1.NRW000M == true) {
+    if (c1.NRW000M == true) {
       fill(#FF0000);
       textAlign(CENTER);
       textSize(25);
-    text("WARNING, DANGEROUS SPEEDS", width/2, height - 10);
+      text("WARNING, DANGEROUS SPEEDS", width/2, height - 10);
     }
   }
 
   void screen() {
+    if (ch == 0) {
+      ch = 3;
+    }
+    if (ch == 4) {
+      ch = 1;
+    }
     typing = password && cube > 0 && cube < 8;
     if (cube == 1) {
       ccube = 33;
@@ -92,76 +98,82 @@ class Info {
     }
     if (password == true) {
       text("ENTER PASSWORD", width/2, 50);
-      s = loadImage("Placeholder2.png");
-    } else {
-      s = loadImage("Placeholder.png");
-    }
-    if (ch==0) {
-      ch=3;
-    }
-    if (ch==4) {
-      ch =1;
-    }
-    imageMode(CORNER);
-    if (password == true&&start == true) {
-      enterpass++;
-      if (enterpass<=45) {
-        value = 255;
+      if (ch==0) {
+        ch=3;
       }
-      if (enterpass>=46) {
-        value = 0;
+      if (ch==4) {
+        ch =1;
       }
-      if (enterpass>=91) {
-        enterpass = 0;
-      }
-      rectMode(CORNER);
-      fill(0);
-      rect(0, 0, width, height);
-      fill(255);
-      textSize(40);
-      text("ENTER PASSWORD", width/2, 50);
-      textSize(50);
-      text("_  _  _  _  _  _  _", idkatthispoint, height/2);
-      textSize(35);
-      text("ENTER", width/4+5, height-50);
-      text("CANCEL", (width/4)*3-5, height-50);
-      rectMode(CENTER);
-      fill(value);
-      rect(ccube, height/2-22, 20, 40);
-      if (merp == 1) {
-        fill(255);
-        rect(width/4+5, height-40, 100, 5);
-      } else if (merp == 2) {
-        fill(255);
-        rect(width/4*3-5, height-40, 120, 5);
-      }
-      if (keyCode == 10&& merp == 2&&password == true) {
-        start = false;
-        password = false;
-        keyCode = 0;
-        ch = 0;
-        merp = 0;
-        cube = -1;
-        uselesspt2 = false;
-        passing = passing.substring(0, passing.length()-7);
-      } else if (keyCode == ENTER && merp == 1 && password == true) {
-        if (passing.equals(fRatecontroll)) {
-          start = true;
-          password = false;
-          G4M3D3V = true;
-        } else if (passing.equals(speed)) {
-          start = true;
-          password = false;
-          c1.NRW000M = true;
+      imageMode(CORNER);
+      if (password == true&&start == true) {
+        enterpass++;
+        if (enterpass<=45) {
+          value = 255;
         }
-      }
+        if (enterpass>=46) {
+          value = 0;
+        }
+        if (enterpass>=91) {
+          enterpass = 0;
+        }
+        rectMode(CORNER);
+        fill(0);
+        rect(0, 0, width, height);
+        fill(255);
+        textSize(40);
+        text("ENTER PASSWORD", width/2, 50);
+        textSize(50);
+        text("_  _  _  _  _  _  _", idkatthispoint, height/2);
+        textSize(35);
+        text("ENTER", width/4+5, height-50);
+        text("CANCEL", (width/4)*3-5, height-50);
+        rectMode(CENTER);
+        fill(value);
+        rect(ccube, height/2-22, 20, 40);
+        if (merp == 1) {
+          fill(255);
+          rect(width/4+5, height-40, 100, 5);
+        } else if (merp == 2) {
+          fill(255);
+          rect(width/4*3-5, height-40, 120, 5);
+        }
+        if (keyCode == 10&& merp == 2&&password == true) {
+          start = false;
+          password = false;
+          keyCode = 0;
+          ch = 0;
+          merp = 0;
+          cube = -1;
+          uselesspt2 = false;
+          passing = passing.substring(0, passing.length()-7);
+        } else if (keyCode == ENTER && merp == 1 && password == true) {
+          if (passing.equals(fRatecontroll)) {
+            start = true;
+            password = false;
+            G4M3D3V = true;
+          } else if (passing.equals(speed)) {
+            start = true;
+            password = false;
+            c1.NRW000M = true;
+          } else if (passing.equals(god)) {
+            start = true;
+            password = false;
+            IM0RT4L = true;
+          } else if (passing.equals(joat)) {
+            start = true;
+            password = false;
+            IM0RT4L = true;
+            G4M3D3V = true;
+          }
+        }
 
-      fill(255);
-      if (password) {
-        int startX = idkatthispoint - spacing*3;
-        for (int l = 0; l < passing.length(); l++) {
-          char c = passing.charAt(l);
-          text(c, startX + l * spacing, height/2-5);
+        fill(255);
+        if (password) {
+          int startX = idkatthispoint - spacing*3;
+          for (int l = 0; l < passing.length(); l++) {
+            char c = passing.charAt(l);
+            text(c, startX + l * spacing, height/2-5);
+          }
         }
       }
     }
