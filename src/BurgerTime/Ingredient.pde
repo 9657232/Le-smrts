@@ -1,7 +1,7 @@
 class Ingredient {
   // Member Variables
-  int x, x1, x2, x3, y, w, h, speed, xtype, type, yType, xx, m, m1, m2, m3, timer, z, fall, low, felled;
-  boolean f, f2, f3, f4, falling, fell, enemontop;
+  int x, x1, x2, x3, y, w, h, speed, xtype, type, yType, xx, m, m1, m2, m3, timer, z, fall, low, felled, e;
+  boolean f, f2, f3, f4, falling, fell, enemontop, enemyOn;
   PImage i, i1, i2, i3;
   float speedtimer;
 
@@ -105,7 +105,7 @@ class Ingredient {
     } else {
       falling = false;
     }
-    if (falling == true) {
+    if (falling == true||enemyOn == true) {
       speedtimer = speedtimer+.1;
       if (speedtimer >=.2) {
         speed = 2;
@@ -117,6 +117,7 @@ class Ingredient {
     for (z = 0; z<ingredients.length; z++) {
       if (falling == true&&ingredients[z].y<y+4&&ingredients[z].y>y&&xx>=ingredients[z].xx-2&&xx<=ingredients[z].xx+2) {
         y = ingredients[z].y;
+        ingredients[z].y = ingredients[z].y+12;
         f = false;
         f2 = false;
         f3 = false;
@@ -165,6 +166,17 @@ class Ingredient {
           m2 = y;
           m3 = y;
         }
+      }
+    }
+    for (Enemy e : enemies) {
+      if (e.x >= xx-26&&e.x<=xx+26&&e.y>=y-12&&e.y<=y+4&&f == true&&f2 == true&&f3 == true && f4 == true) {
+        e.y = y-4;
+        e.x = e.x-e.xspeed;
+        f = true;
+        f2 = true;
+        f3 = true;
+        f4 = true;
+        enemyOn = true;
       }
     }
   }
